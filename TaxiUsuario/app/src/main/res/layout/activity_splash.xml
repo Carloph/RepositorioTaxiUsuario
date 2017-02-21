@@ -11,6 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.taxiusuario.Splash">
 
+
+
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"

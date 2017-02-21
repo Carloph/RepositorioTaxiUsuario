@@ -9,4 +9,13 @@
     <string name="last_name">Apellidos</string>
     <string name="phone_number">Número de celular</string>
     <string name="policies">Políticas de privacidad</string>
+    <string name="legend_remember_password">Si olvidaste tu contraseña introduce tu correo electrónico para recuperarla</string>
+    <string name="recovery">RECUPERAR</string>
+    <string name="title_activity_menu_maps">Map</string>
+    <string name="title_activity_home">Home</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
