@@ -8,12 +8,13 @@
     <string name="name">Nombre</string>
     <string name="last_name">Apellidos</string>
     <string name="phone_number">Número de celular</string>
-    <string name="policies">Políticas de privacidad</string>
+    <string name="policies">Al registrarse, usted acepta nuestras políticas de privacidad</string>
     <string name="legend_remember_password">Si olvidaste tu contraseña introduce tu correo electrónico para recuperarla</string>
     <string name="recovery">RECUPERAR</string>
     <string name="title_activity_menu_maps">Map</string>
     <string name="title_activity_home">Home</string>
-
+    <string name="email_error">Favor de escribir su email</string>
+    <string name="password_error">Favor de escribir su contraseña</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

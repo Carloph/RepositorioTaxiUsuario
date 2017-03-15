@@ -1,7 +1,9 @@
-package com.taxiusuario;
+package com.taxiusuario.View.RememberPass;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.taxiusuario.R;
 
 public class RememberPassword extends AppCompatActivity {
 

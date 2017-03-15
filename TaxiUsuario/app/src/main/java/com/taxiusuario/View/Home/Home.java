@@ -1,4 +1,4 @@
-package com.taxiusuario;
+package com.taxiusuario.View.Home;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -28,6 +28,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.taxiusuario.R;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, LocationListener {
