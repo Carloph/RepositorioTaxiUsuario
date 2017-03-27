@@ -54,7 +54,8 @@ public class LoginPresenterImp implements LoginPresenter, LoginInteractor.OnLogi
     }
 
     @Override
-    public void onSuccessFinally(int status) {
-        loginView.navigateToHome(status);
+    public void onSuccessFinally(int id, String name, String last, String number) {
+        loginView.hideProgress();
+        loginView.navigateToHome(id,name,last,number);
     }
 }

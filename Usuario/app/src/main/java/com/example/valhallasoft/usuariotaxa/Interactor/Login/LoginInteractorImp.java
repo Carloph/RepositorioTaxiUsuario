@@ -45,18 +45,18 @@ public class LoginInteractorImp implements LoginInteractor{
 
                     if(response.body().getStatus()==1) {
 
-                        listener.onSuccessFinally(response.body().getSesion().getIDUSER());
+                        listener.onSuccessFinally(
+                                response.body().getSesion().getIDUSER(),
+                                response.body().getSesion().getName(),
+                                response.body().getSesion().getLastName(),
+                                response.body().getSesion().getNumber());
 
-                    }else if(response.body().getStatus()==2) {
-
-                        listener.onMessageService(response.body().getMessage());
-
-                    }else if(response.body().getStatus()==3){
+                    }else if(response.body().getStatus()!=1) {
 
                         listener.onMessageService(response.body().getMessage());
 
                     }else {
-
+                        listener.onMessageService("Error de conexión, intente de nuevo");
                     }
                 }
 

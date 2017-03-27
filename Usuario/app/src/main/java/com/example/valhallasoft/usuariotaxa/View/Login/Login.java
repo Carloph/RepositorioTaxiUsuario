@@ -1,7 +1,9 @@
 package com.example.valhallasoft.usuariotaxa.View.Login;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
@@ -27,7 +29,10 @@ public class Login extends AppCompatActivity implements LoginView {
     public EditText edt_email;
     public EditText edt_password;
     private Button btn_login;
+
     private LoginPresenterImp presenter;
+    private SharedPreferences preferences;
+
     private static final int REQUEST_ID_ACCESS_COURSE_FINE_LOCATION = 100;
 
     @Override
@@ -35,7 +40,10 @@ public class Login extends AppCompatActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         checkPermissionLocation();
+
         presenter = new LoginPresenterImp(this);
+        preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
+
         progressDialog = new ProgressDialog(this);
         tv_sig_in = (TextView) findViewById(R.id.textView_sign_in);
         tv_remember_password = (TextView) findViewById(R.id.textView_remember_password);
@@ -89,12 +97,13 @@ public class Login extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void navigateToHome(int id) {
-
+    public void navigateToHome(int id, String name, String last, String number) {
         Intent intent_home = new Intent(this,Home.class);
+        saveOnPreferences(id,name, last,number);
         intent_home.putExtra("ID_USER",id);
+        Toast.makeText(getApplicationContext(),"¡Hola "+name+"!",Toast.LENGTH_SHORT).show();
+        intent_home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent_home);
-        finish();
     }
 
     @Override
@@ -106,6 +115,14 @@ public class Login extends AppCompatActivity implements LoginView {
     protected void onDestroy() {
         presenter.onDestroy();
         super.onDestroy();
+    }
+
+    public void saveOnPreferences(int id, String name, String last, String number){
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("id", id);
+        editor.putString("name",name);
+        editor.putString("last_name",last);
+        editor.putString("number",number);
     }
 
     public void checkPermissionLocation(){
