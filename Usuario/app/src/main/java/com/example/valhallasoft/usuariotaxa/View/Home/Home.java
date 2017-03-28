@@ -20,10 +20,10 @@ import com.example.valhallasoft.usuariotaxa.View.Home.HomeFragments.homeFragment
 public class Home extends AppCompatActivity {
 
     int id;
-    public String email;
-    public String name;
-    public String last;
-    public String number;
+    public static String email;
+    public static String name;
+    public static String last;
+    public static String number;
 
     private SharedPreferences preferences;
 
@@ -32,10 +32,9 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        if(savedInstanceState == null){
+        if(savedInstanceState == null) {
             getDataPreferences();
         }
-
         setupNavigationView();
     }
 
@@ -66,8 +65,6 @@ public class Home extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.navigation_home:
-                homeFragment home = new homeFragment();
-                home.setInfo(name,last);
                 pushFragment(new homeFragment());
                 break;
             case R.id.navigation_dashboard:
