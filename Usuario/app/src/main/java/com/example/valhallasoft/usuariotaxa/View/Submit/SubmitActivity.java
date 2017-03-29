@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 import com.example.valhallasoft.usuariotaxa.Presenter.Submit.SubmitPresenterImp;
 import com.example.valhallasoft.usuariotaxa.R;
-import com.example.valhallasoft.usuariotaxa.View.Login.Login;
+import com.example.valhallasoft.usuariotaxa.View.Login.LoginActivity;
 
-public class Submit extends AppCompatActivity implements SubmitView{
+public class SubmitActivity extends AppCompatActivity implements SubmitView{
 
     private EditText edt_email;
     private EditText edt_password;
@@ -77,7 +77,7 @@ public class Submit extends AppCompatActivity implements SubmitView{
 
     @Override
     public void navigateLogin(String message) {
-        Intent intent_login = new Intent(this,Login.class);
+        Intent intent_login = new Intent(this,LoginActivity.class);
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
         startActivity(intent_login);
         finish();

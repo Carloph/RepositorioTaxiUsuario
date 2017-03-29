@@ -18,10 +18,10 @@ import android.widget.Toast;
 
 import com.example.valhallasoft.usuariotaxa.Presenter.Login.LoginPresenterImp;
 import com.example.valhallasoft.usuariotaxa.R;
-import com.example.valhallasoft.usuariotaxa.View.Home.Home;
-import com.example.valhallasoft.usuariotaxa.View.Submit.Submit;
+import com.example.valhallasoft.usuariotaxa.View.Home.HomeActivity;
+import com.example.valhallasoft.usuariotaxa.View.Submit.SubmitActivity;
 
-public class Login extends AppCompatActivity implements LoginView {
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private TextView tv_sig_in;
     private TextView tv_remember_password;
@@ -54,7 +54,7 @@ public class Login extends AppCompatActivity implements LoginView {
         tv_sig_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_submit = new Intent(Login.this,Submit.class);
+                Intent intent_submit = new Intent(LoginActivity.this,SubmitActivity.class);
                 startActivity(intent_submit);
             }
         });
@@ -62,7 +62,7 @@ public class Login extends AppCompatActivity implements LoginView {
 //        tv_remember_password.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent_remember_password = new Intent(Login.this,RememberPassword.class);
+//                Intent intent_remember_password = new Intent(LoginActivity.this,RememberPassword.class);
 //                startActivity(intent_remember_password);
 //            }
 //        });
@@ -98,7 +98,7 @@ public class Login extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToHome(int id, String name, String last, String number) {
-        Intent intent_home = new Intent(this,Home.class);
+        Intent intent_home = new Intent(this,HomeActivity.class);
         saveOnPreferences(id,name, last,number);
         intent_home.putExtra("ID_USER",id);
         Toast.makeText(getApplicationContext(),"¡Hola "+name+"!",Toast.LENGTH_SHORT).show();
@@ -123,20 +123,21 @@ public class Login extends AppCompatActivity implements LoginView {
         editor.putString("name",name);
         editor.putString("last_name",last);
         editor.putString("number",number);
+        editor.apply();
     }
 
     public void checkPermissionLocation(){
         if (Build.VERSION.SDK_INT >= 23) {
             int accessCoarsePermission
-                    = ContextCompat.checkSelfPermission(Login.this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
+                    = ContextCompat.checkSelfPermission(LoginActivity.this, android.Manifest.permission.ACCESS_COARSE_LOCATION);
             int accessFinePermission
-                    = ContextCompat.checkSelfPermission(Login.this, android.Manifest.permission.ACCESS_FINE_LOCATION);
+                    = ContextCompat.checkSelfPermission(LoginActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION);
             if (accessCoarsePermission != PackageManager.PERMISSION_GRANTED
                     || accessFinePermission != PackageManager.PERMISSION_GRANTED) {
 
                 String[] permissions = new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
                         android.Manifest.permission.ACCESS_FINE_LOCATION};
-                ActivityCompat.requestPermissions(Login.this, permissions,
+                ActivityCompat.requestPermissions(LoginActivity.this, permissions,
                         REQUEST_ID_ACCESS_COURSE_FINE_LOCATION);
             }
         }

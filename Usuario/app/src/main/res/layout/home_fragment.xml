@@ -9,6 +9,7 @@
         android:id="@+id/tvHomeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="FragmentHome"
         android:gravity="center" />
 
 </LinearLayout>

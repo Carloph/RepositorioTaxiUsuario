@@ -11,21 +11,23 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.valhallasoft.usuariotaxa.R;
 import com.example.valhallasoft.usuariotaxa.Utils.Util;
 import com.example.valhallasoft.usuariotaxa.View.Home.HomeFragments.dashFragment;
 import com.example.valhallasoft.usuariotaxa.View.Home.HomeFragments.homeFragment;
 
-public class Home extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    int id;
+    public int id;
     public static String email;
     public static String name;
     public static String last;
     public static String number;
 
     private SharedPreferences preferences;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,34 +37,15 @@ public class Home extends AppCompatActivity {
         if(savedInstanceState == null) {
             getDataPreferences();
         }
-        setupNavigationView();
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        onNavigationItemSelected(bottomNavigationView.getMenu().getItem(0));
+
     }
 
-    private void setupNavigationView(){
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
-
-        if(bottomNavigationView!=null){
-
-            Menu menu = bottomNavigationView.getMenu();
-            selectFragment(menu.getItem(0));
-
-            bottomNavigationView.setOnNavigationItemSelectedListener(
-                    new BottomNavigationView.OnNavigationItemSelectedListener() {
-                        @Override
-                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                            selectFragment(item);
-                            return false;
-                        }
-                    });
-
-        }
-    }
-
-    protected void selectFragment(MenuItem item){
-
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         item.setChecked(true);
-
         switch (item.getItemId()){
             case R.id.navigation_home:
                 pushFragment(new homeFragment());
@@ -71,6 +54,7 @@ public class Home extends AppCompatActivity {
                 pushFragment(new dashFragment());
                 break;
         }
+        return false;
     }
 
     protected void pushFragment(Fragment fragment){
@@ -94,4 +78,5 @@ public class Home extends AppCompatActivity {
         last = Util.getLastNPreference(preferences);
         number = Util.getNumberPreference(preferences);
     }
+
 }

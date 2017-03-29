@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context="com.example.valhallasoft.usuariotaxa.View.Home.Home">
+    tools:context="com.example.valhallasoft.usuariotaxa.View.Home.HomeActivity">
 
     <FrameLayout
         android:id="@+id/main_content"
