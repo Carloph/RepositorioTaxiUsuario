@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         item.setChecked(true);
         switch (item.getItemId()){
             case R.id.navigation_home:
-                pushFragment(new homeFragment());
+                pushFragment(new homeFragment().newInstance(id,name,last));
                 break;
             case R.id.navigation_dashboard:
                 pushFragment(new dashFragment());
@@ -71,12 +71,12 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void getDataPreferences(){
-        preferences =  getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        id = Util.getIdUser(preferences);
-        email = Util.getNamePreference(preferences);
-        name = Util.getLastNPreference(preferences);
-        last = Util.getLastNPreference(preferences);
-        number = Util.getNumberPreference(preferences);
+        preferences =  getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        this.id = Util.getIdUser(preferences);
+        this.email = Util.getEmailPreference(preferences);
+        this.name = Util.getNamePreference(preferences);
+        this.last = Util.getLastNPreference(preferences);
+        this.number = Util.getNumberPreference(preferences);
     }
 
 }

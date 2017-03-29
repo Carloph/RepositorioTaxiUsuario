@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class ModelCredential {
-    @SerializedName("ID_USER")
+    @SerializedName("ID_CLIENTE")
     @Expose
     private int iDUSER;
 

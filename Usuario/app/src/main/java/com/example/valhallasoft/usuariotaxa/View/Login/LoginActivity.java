@@ -97,10 +97,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void navigateToHome(int id, String name, String last, String number) {
+    public void navigateToHome(int id, String email,String name, String last, String number) {
         Intent intent_home = new Intent(this,HomeActivity.class);
-        saveOnPreferences(id,name, last,number);
-        intent_home.putExtra("ID_USER",id);
+        saveOnPreferences(id,email,name,last,number);
         Toast.makeText(getApplicationContext(),"¡Hola "+name+"!",Toast.LENGTH_SHORT).show();
         intent_home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent_home);
@@ -117,9 +116,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         super.onDestroy();
     }
 
-    public void saveOnPreferences(int id, String name, String last, String number){
+    public void saveOnPreferences(int id, String email,String name, String last, String number){
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("id", id);
+        editor.putString("email",email);
         editor.putString("name",name);
         editor.putString("last_name",last);
         editor.putString("number",number);

@@ -13,7 +13,7 @@ public interface LoginView {
 
     void setPasswordError();
 
-    void navigateToHome(int id_user, String name, String last, String number);
+    void navigateToHome(int id_user,String email, String name, String last, String number);
 
     void setMessageService(String message);
 

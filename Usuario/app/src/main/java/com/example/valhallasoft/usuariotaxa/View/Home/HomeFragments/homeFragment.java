@@ -17,27 +17,39 @@ import com.example.valhallasoft.usuariotaxa.R;
 
 public class homeFragment extends Fragment {
 
-    private static int id_user=0;
-    private static String name="nombre";
-    private static String last="apellidos";
+    public int id_user=0;
+    public String name="nombre";
+    public String last="apellidos";
 
     private TextView tvName;
+
+    public static homeFragment newInstance(int id, String name,String last) {
+        homeFragment fragmentDemo = new homeFragment();
+        Bundle args = new Bundle();
+        args.putInt("id", id);
+        args.putString("name", name);
+        args.putString("last", last);
+        fragmentDemo.setArguments(args);
+        return fragmentDemo;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        id_user = getArguments().getInt("id",0);
+        name = getArguments().getString("name","");
+        last = getArguments().getString("last","");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        Log.e("variable de nombre: ",name);
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
     @Override
     public void onViewCreated(View view,  Bundle savedInstanceState) {
         tvName = (TextView)view.findViewById(R.id.tvHomeName);
-        tvName.setText("¡Hola "+name+"!");
+        tvName.setText("¡Hola "+name+" "+last+"!");
     }
 }

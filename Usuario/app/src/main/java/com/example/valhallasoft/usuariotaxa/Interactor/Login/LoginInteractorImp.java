@@ -47,6 +47,7 @@ public class LoginInteractorImp implements LoginInteractor{
 
                         listener.onSuccessFinally(
                                 response.body().getSesion().getIDUSER(),
+                                response.body().getSesion().getEmail(),
                                 response.body().getSesion().getName(),
                                 response.body().getSesion().getLastName(),
                                 response.body().getSesion().getNumber());

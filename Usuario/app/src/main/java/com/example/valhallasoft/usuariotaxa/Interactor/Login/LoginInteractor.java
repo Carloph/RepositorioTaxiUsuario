@@ -13,7 +13,7 @@ public interface LoginInteractor {
 
         void onMessageService(String message);
 
-        void onSuccessFinally(int id, String name, String last, String number);
+        void onSuccessFinally(int id, String email, String name, String last, String number);
     }
 
     void login(String username, String password, OnLoginFinishedListener listener);
